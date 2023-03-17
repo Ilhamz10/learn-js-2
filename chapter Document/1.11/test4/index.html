@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body style="height: 2000px">
+
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit sint atque dolorum fuga ad incidunt
+    voluptatum error fugiat animi amet! Odio temporibus nulla id unde quaerat dignissimos enim nisi rem provident
+    molestias sit tempore omnis recusandae
+    esse sequi officia sapiente.</p>
+
+  <blockquote>
+    Teacher: Why are you late?
+    Student: There was a man who lost a hundred dollar bill.
+    Teacher: That's nice. Were you helping him look for it?
+    Student: No. I was standing on it.
+  </blockquote>
+
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit sint atque dolorum fuga ad incidunt
+    voluptatum error fugiat animi amet! Odio temporibus nulla id unde quaerat dignissimos enim nisi rem provident
+    molestias sit tempore omnis recusandae
+    esse sequi officia sapiente.</p>
+
+
+  <script>
+    function positionAt(anchor, position, elem) {
+      let cords = anchor.getBoundingClientRect()
+
+      if (position == 'top-out') {
+        elem.style.top = cords.y - elem.offsetHeight + 'px'
+        elem.style.left = cords.x + 'px'
+      } else if (position == 'bottom-out') {
+        elem.style.left = cords.x + 'px'
+        elem.style.top = cords.bottom + 'px'
+      } else if (position == 'right-out') {
+        elem.style.top = cords.y + 'px'
+        elem.style.left = cords.right + 'px'
+      } else if (position == 'bottom-in') {
+        elem.style.left = cords.x + 'px'
+        elem.style.top = cords.bottom - elem.offsetHeight + 'px'
+      } else if (position == 'right-in') {
+        elem.style.top = cords.y + 'px'
+        elem.style.left = cords.right - elem.offsetWidth + 'px'
+      } else if (position == 'top-in') {
+        elem.style.top = cords.y + 'px'
+        elem.style.left = cords.x + 'px'
+      }
+    }
+
+    function showNote(anchor, position, html) {
+      let note = document.createElement('div');
+      note.className = "note";
+      note.innerHTML = html;
+      document.body.append(note);
+
+      positionAt(anchor, position, note);
+    }
+
+    let blockquote = document.querySelector('blockquote');
+
+    showNote(blockquote, "top-out", "note top-out");
+    showNote(blockquote, "right-out", "note right-out");
+    showNote(blockquote, "bottom-out", "note bottom-out");
+    showNote(blockquote, "bottom-in", "note bottom-in");
+    showNote(blockquote, "right-in", "note right-in");
+    showNote(blockquote, "top-in", "note top-in");
+  </script>
+
+
+</body>
+
+</html>

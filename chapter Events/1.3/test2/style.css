@@ -1,0 +1,8 @@
+span:hover{
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.open~ul{
+    display: none;
+}
